@@ -4,14 +4,22 @@ Dinosaur d1;    //makes a place in memory to keep dino object
 float gravity;  // gravity
 float distance; // track distance between dino and a cactus
 
+//Declare Image
 PImage img;
- 
+
+import processing.sound.*;
+SoundFile file;
+
 
 // this function runs once only
 void setup() {
   
 img = loadImage("nkb.jpeg");
  
+
+file = new SoundFile(this, "noice.mp3");
+  
+  
   // draw the canvas
   size(800, 200);
   
@@ -25,6 +33,7 @@ img = loadImage("nkb.jpeg");
 // this function runs repeatedly
 void draw() {
 
+  frameRate(150);
   
   image(img, 0, 0, 800, 200);
   
@@ -34,7 +43,7 @@ void draw() {
   // check whether the cactus is touching the dino
   if (d1.isTouching(c1)) {
     textSize(80);
-    text("HIT", 400, 100);
+    text("PHOTOGRAPH", 200, 100);
     noLoop();  // stop the game
   }
   
@@ -42,6 +51,9 @@ void draw() {
 
 // respond to keypress 
 void keyPressed() {
+  
+  file.play();
+  
   if (d1.getY() == 170) {
     d1.setA(-1.2);
   }
