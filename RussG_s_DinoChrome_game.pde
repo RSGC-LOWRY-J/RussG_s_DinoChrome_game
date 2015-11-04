@@ -10,7 +10,7 @@ PImage img;
 // this function runs once only
 void setup() {
   
-img = loadImage("nbk.jpeg");
+img = loadImage("nkb.jpeg");
  
   // draw the canvas
   size(800, 200);
