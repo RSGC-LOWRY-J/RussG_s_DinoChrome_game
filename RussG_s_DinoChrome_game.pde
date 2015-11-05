@@ -8,8 +8,9 @@ float distance; // track distance between dino and a cactus
 PImage img;
 
 import processing.sound.*;
-SoundFile file;
-
+SoundFile jump;
+SoundFile nono;
+SoundFile ded;
 
 // this function runs once only
 void setup() {
@@ -17,8 +18,11 @@ void setup() {
 img = loadImage("nkb.jpeg");
  
 
-file = new SoundFile(this, "noice.mp3");
-  
+jump = new SoundFile(this, "noice.mp3");
+nono = new SoundFile(this, "nono.mp3");  
+ded = new SoundFile(this, "ded.mp3");
+
+  nono.loop();
   
   // draw the canvas
   size(800, 200);
@@ -44,15 +48,18 @@ void draw() {
   if (d1.isTouching(c1)) {
     textSize(80);
     text("PHOTOGRAPH", 200, 100);
+    nono.stop();
+    ded.play();
     noLoop();  // stop the game
-  }
+    }
+
   
 }
 
 // respond to keypress 
 void keyPressed() {
   
-  file.play();
+  jump.play();
   
   if (d1.getY() == 170) {
     d1.setA(-1.2);
