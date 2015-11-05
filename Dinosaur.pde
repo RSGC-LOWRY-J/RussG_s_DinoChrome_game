@@ -72,7 +72,7 @@ class Dinosaur {
 
     // decide whether dino is touching this cactus
     //            dino radius   cactus radius
-    if ( distance < (   dr   +     c.getR () ) ) {
+    if ( distance < (   dr   +     c.getR ()*.75 ) ) {
       return true;  // exit the method and say "yes" (is touching!) or "true"
     }
     
